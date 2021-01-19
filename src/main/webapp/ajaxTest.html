@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<form id="myForm">
+    姓名：<input type="text" name="name"/>
+    年龄：<input type="text" name="age"/>
+</form>
+<button onclick="submitBtn()">提交</button>
+
+</body>
+<script>
+    function submitBtn(){
+        var dataPost={}
+        dataPost.name=$("input:eq(0)").val();
+        dataPost.age=$("input:eq(1)").val();
+
+        $.ajax({
+            url:'http://localhost:8080/SpringMVCDemo/work',
+            type:'POST',
+            data:JSON.stringify(dataPost),
+            contentType:'application/json;charset=UTF-8',
+            success:function(result){
+                console.log(result)
+            },
+            error:function(){
+
+            }
+
+
+
+        });
+
+
+
+
+    }
+
+
+</script>
+</html>
